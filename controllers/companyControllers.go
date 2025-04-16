@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"net/http"
 	"time"
 
@@ -57,14 +56,34 @@ func CompaniesCreate(c *gin.Context) {
 		InvoiceCounter:     body.InvoiceCounter,
 	}
 
-	initializers.DB.Create(&companyCreate)
+	result := initializers.DB.Create(&companyCreate)
+	if result != nil {
+		c.Status(400)
+	}
 
-	fmt.Println(companyCreate)
-
-	//create a post
-
-	// return it
 	c.JSON(200, gin.H{
-		"message": "ponggg3x",
+		"company": companyCreate,
 	})
+}
+
+func CompaniesFind(c *gin.Context) {
+
+	var companies []models.Company
+	initializers.DB.Find(&companies)
+
+	c.JSON(200, gin.H{
+		"companies": companies,
+	})
+
+}
+
+func CompaniesFindOne(c *gin.Context) {
+
+	var company models.Company
+	id := c.Param("id")
+	initializers.DB.Find(&company, id)
+	c.JSON(200, gin.H{
+		"company": company,
+	})
+
 }

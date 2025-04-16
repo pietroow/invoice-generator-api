@@ -14,5 +14,7 @@ func init() {
 func main() {
 	router := gin.Default()
 	router.POST("/companies", controllers.CompaniesCreate)
+	router.GET("/companies", controllers.CompaniesFind)
+	router.GET("/companies/:id", controllers.CompaniesFindOne)
 	router.Run()
 }
