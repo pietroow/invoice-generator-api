@@ -1,8 +1,8 @@
 package main
 
 import (
-	"invoice-generator/initializers"
-	"invoice-generator/models"
+	"github.com/pietroow/invoice-generator-api/initializers"
+	"github.com/pietroow/invoice-generator-api/models"
 )
 
 func init() {

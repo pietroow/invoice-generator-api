@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"invoice-generator/controllers"
-	"invoice-generator/initializers"
+	"github.com/pietroow/invoice-generator-api/controllers"
+	"github.com/pietroow/invoice-generator-api/initializers"
 )
 
 func init() {
@@ -13,6 +13,6 @@ func init() {
 
 func main() {
 	router := gin.Default()
-	router.POST("/invoices", controllers.InvoicesCreate)
+	router.POST("/companies", controllers.CompaniesCreate)
 	router.Run()
 }
