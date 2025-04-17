@@ -17,5 +17,6 @@ func main() {
 	router.GET("/companies", controllers.CompaniesFind)
 	router.GET("/companies/:id", controllers.CompaniesFindOne)
 	router.PUT("/companies/:id", controllers.CompanyUpdate)
+	router.DELETE("/companies/:id", controllers.CompanyDelete)
 	router.Run()
 }
