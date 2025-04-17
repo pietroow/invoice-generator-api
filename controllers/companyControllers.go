@@ -123,3 +123,9 @@ func CompanyUpdate(c *gin.Context) {
 	})
 
 }
+
+func CompanyDelete(c *gin.Context) {
+	id := c.Param("id")
+	initializers.DB.Delete(&models.Company{}, id)
+	c.Status(200)
+}
