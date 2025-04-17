@@ -67,22 +67,58 @@ func CompaniesCreate(c *gin.Context) {
 }
 
 func CompaniesFind(c *gin.Context) {
-
 	var companies []models.Company
 	initializers.DB.Find(&companies)
 
 	c.JSON(200, gin.H{
 		"companies": companies,
 	})
-
 }
 
 func CompaniesFindOne(c *gin.Context) {
-
 	var company models.Company
 	id := c.Param("id")
 	initializers.DB.Find(&company, id)
 	c.JSON(200, gin.H{
+		"company": company,
+	})
+}
+
+func CompanyUpdate(c *gin.Context) {
+	var body CompanyCreate
+	if err := c.ShouldBindJSON(&body); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	var company models.Company
+	id := c.Param("id")
+	initializers.DB.Find(&company, id)
+
+	contractEndTime, err := time.Parse(time.RFC3339, body.ContractEnd)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid date format for contractEnd"})
+		return
+	}
+
+	initializers.DB.Model(&company).Updates(models.Company{
+		Name:               body.Name,
+		Email:              body.Email,
+		PhoneNumber:        body.PhoneNumber,
+		AddressLine1:       body.AddressLine1,
+		City:               body.City,
+		State:              body.State,
+		PostalCode:         body.PostalCode,
+		Country:            body.Country,
+		IsSelf:             body.IsSelf,
+		ContractEnd:        &contractEndTime,
+		BillingType:        body.BillingType,
+		HourlyRate:         body.HourlyRate,
+		DefaultMonthlyRate: body.DefaultMonthlyRate,
+		InvoiceCounter:     body.InvoiceCounter,
+	})
+
+	c.JSON(204, gin.H{
 		"company": company,
 	})
 

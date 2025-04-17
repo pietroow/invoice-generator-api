@@ -16,5 +16,6 @@ func main() {
 	router.POST("/companies", controllers.CompaniesCreate)
 	router.GET("/companies", controllers.CompaniesFind)
 	router.GET("/companies/:id", controllers.CompaniesFindOne)
+	router.PUT("/companies/:id", controllers.CompanyUpdate)
 	router.Run()
 }
