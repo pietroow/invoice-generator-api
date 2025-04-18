@@ -1,0 +1,46 @@
+# Binaries and compiled files
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+invoice-generator-api
+bin/
+tmp/
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+*.prof
+coverage.html
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Go specific
+vendor/
+go.work
+
+# Temporary files
+*.tmp
+.tmp*
