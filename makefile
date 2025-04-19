@@ -16,7 +16,7 @@ migrate:
 
 # Run the application in development mode with hot reload
 dev:
-	CompileDaemon -command="./invoice-generator-api" -build="go build -o invoice-generator-api cmd/api/main.go"
+	GOPATH=$(shell go env GOPATH) CompileDaemon -command="./invoice-generator-api" -build="go build -o invoice-generator-api cmd/api/main.go"
 
 # Build the application
 build:

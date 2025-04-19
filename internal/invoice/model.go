@@ -3,7 +3,7 @@ package invoice
 import (
 	"time"
 
-	"github.com/pietroow/invoice-generator-api/company"
+	"github.com/pietroow/invoice-generator-api/internal/company"
 	"gorm.io/gorm"
 )
 

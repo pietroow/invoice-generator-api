@@ -69,9 +69,7 @@ func CompaniesFind(c *gin.Context) {
 	var companies []Company
 	config.DB.Find(&companies)
 
-	c.JSON(200, gin.H{
-		"companies": companies,
-	})
+	c.JSON(http.StatusOK, companies)
 }
 
 func CompaniesFindOne(c *gin.Context) {

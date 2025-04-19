@@ -1,18 +1,18 @@
 package main
 
 import (
-	"github.com/pietroow/invoice-generator-api/company"
-	"github.com/pietroow/invoice-generator-api/initializers"
-	"github.com/pietroow/invoice-generator-api/invoice"
+	"github.com/pietroow/invoice-generator-api/internal/company"
+	"github.com/pietroow/invoice-generator-api/internal/config"
+	"github.com/pietroow/invoice-generator-api/internal/invoice"
 )
 
 func init() {
-	initializers.LoadEnvVariables()
-	initializers.ConnectToDatabase()
+	config.LoadEnvVariables()
+	config.ConnectToDatabase()
 }
 
 func main() {
-	initializers.DB.AutoMigrate(&company.Company{})
-	initializers.DB.AutoMigrate(&invoice.Invoice{})
-	initializers.DB.AutoMigrate(&invoice.InvoiceItem{})
+	config.DB.AutoMigrate(&company.Company{})
+	config.DB.AutoMigrate(&invoice.Invoice{})
+	config.DB.AutoMigrate(&invoice.InvoiceItem{})
 }

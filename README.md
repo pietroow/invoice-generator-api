@@ -11,10 +11,10 @@ A Go-based REST API for generating invoices, built with Gin framework and GORM.
 
 ## Project Setup
 
-The project must be cloned in the correct GOPATH location:
+The project can be cloned into any directory of your choice:
 ```bash
-mkdir -p $GOPATH/src/github.com/pietroow
-cd $GOPATH/src/github.com/pietroow
+mkdir -p ~/projects
+cd ~/projects
 git clone https://github.com/pietroow/invoice-generator-api.git
 cd invoice-generator-api
 ```
