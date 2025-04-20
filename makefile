@@ -26,6 +26,10 @@ build:
 run:
 	./invoice-generator-api
 
+# Reorganize dependencies
+tidy:
+	go mod tidy
+
 # Clean build artifacts
 clean:
 	rm -f invoice-generator-api
@@ -43,6 +47,7 @@ help:
 	@echo "  make dev      - Run with hot reload"
 	@echo "  make build    - Build the application"
 	@echo "  make run      - Run the application"
+	@echo "  make tidy     - Reorganize dependencies"
 	@echo "  make clean    - Remove build artifacts"
 
-.PHONY: deps db-setup migrate dev build run clean setup help
+.PHONY: deps db-setup migrate dev build run tidy clean setup help 
